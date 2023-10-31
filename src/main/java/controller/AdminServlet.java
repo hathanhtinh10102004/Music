@@ -43,7 +43,6 @@ public class AdminServlet extends HelloServlet {
                 }
         }
     }
-
     private void listAdmin(HttpServletRequest request, HttpServletResponse response) throws SQLException, ClassNotFoundException, ServletException, IOException {
         List<Admin> list = iAdmin.selectAdmin();
         request.setAttribute("list", list);
