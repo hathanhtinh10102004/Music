@@ -6,6 +6,7 @@ public class User {
     private String Email;
     private int PhoneNumber;
     private String PassWord;
+    private String rePassword;
     public User(String name, String email, int PhoneNumber, String PassWord){
         this.Name = name;
         this.Email = email;
@@ -19,6 +20,15 @@ public class User {
         Email = email;
         PhoneNumber = phoneNumber;
         PassWord = passWord;
+    }
+
+    public User(int id, String rePassword) {
+        this.Id = id;
+        this.rePassword = rePassword;
+    }
+
+    public User(String selectPassword) {
+        
     }
 
     public int getId() {
@@ -60,4 +70,25 @@ public class User {
     public void setPassWord(String passWord) {
         PassWord = passWord;
     }
+
+    public String getRePassword() {
+        return rePassword;
+    }
+
+    public void setRePassword(String rePassword) {
+        this.rePassword = rePassword;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "Id=" + Id +
+                ", Name='" + Name + '\'' +
+                ", Email='" + Email + '\'' +
+                ", PhoneNumber=" + PhoneNumber +
+                ", PassWord='" + PassWord + '\'' +
+                ", rePassword='" + rePassword + '\'' +
+                '}';
+    }
+
 }
