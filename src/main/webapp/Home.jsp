@@ -56,10 +56,9 @@
 
     #zing-logo {
         position: absolute;
-        top: 10px;
         left: 25px;
-        width: 150px;
-        height: 70px;
+        width: 200px;
+        height: 88px;
     }
 
     h2 {
@@ -73,6 +72,7 @@
         font-size: 28px;
         background-image: none;
         background-color: transparent;
+        float: right;
     }
 
     #menu {
@@ -84,17 +84,18 @@
     }
 
     #menu h2 {
+        text-align: left;
         margin: 0;
     }
 
     .search-container {
-        position: absolute;
-        top: 30px;
-        left: auto;
-        right: 25px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
     }
 
     .search-input {
+        margin-top: 30px;
         padding: 5px;
         width: 300px;
         -webkit-border-radius: 15px;
@@ -107,9 +108,11 @@
     }
 
     .search-button {
-        padding: 5px;
-        font-size: 18px;
+        margin-top: 30px;
         -webkit-border-radius: 15px;
+        margin-left: 10px;
+        font-size: 18px;
+        padding: 5px 10px;
     }
 
     .hover-listPlay ul {
@@ -136,7 +139,7 @@
 <div id="wrapper">
     <div id="header">
         <div class="header-conter">
-            <img src="Screenshot from 2023-11-01 09-07-39.png" id="zing-logo">
+            <img src="Screenshot_from_2023-11-01_09-07-39-removebg-preview (1).png" id="zing-logo">
         </div>
         <div class="search-container">
             <input type="text" id="search-input" class="search-input" placeholder="Nhập từ khóa tìm kiếm...">
