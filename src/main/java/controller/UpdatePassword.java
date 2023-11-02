@@ -21,6 +21,14 @@ public class UpdatePassword extends HttpServlet {
     }
 
     @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String action = req.getParameter("action");
+        if (action != null && action.equals("updatePassword")) {
+            req.getRequestDispatcher("editPassWord.jsp").forward(req,resp);
+        }
+    }
+
+    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action  = req.getParameter("action");
         if (action == null) {
@@ -36,8 +44,11 @@ public class UpdatePassword extends HttpServlet {
                     throw new RuntimeException(e);
                 }
                 break;
+            default:
+                break;
         }
     }
+
     private void changePassword (HttpServletRequest request, HttpServletResponse response ) throws SQLException, ClassNotFoundException, ServletException, IOException {
     int id = Integer.parseInt(request.getParameter("id"));
         String password = request.getParameter("password");
