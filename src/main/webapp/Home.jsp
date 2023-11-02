@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
@@ -7,44 +8,52 @@
         margin: 0;
         padding: 0;
     }
+
     #wrapper {
         width: auto;
         margin: auto;
     }
+
     #header {
         width: 1848px;
         height: 100px;
         background-color: #1f1f1f;
     }
+
     #menu {
         width: 1848px;
         height: 70px;
         background-color: #18191e;
     }
+
     #left {
         width: 20%;
         height: 704px;
         background-color: #171b25;
         float: left;
     }
+
     #content {
         width: 60%;
         height: 704px;
         background-color: #030715;
         float: left;
     }
+
     #right {
         width: 20%;
         height: 704px;
         background-color: #030715;
         float: left;
     }
+
     #footer {
         width: 1848px;
         height: 70px;
-        background-color:#18191e;
+        background-color: #18191e;
         clear: both;
     }
+
     #zing-logo {
         position: absolute;
         top: 10px;
@@ -52,17 +61,20 @@
         width: 150px;
         height: 70px;
     }
+
     h2 {
-        font-family: "Tibetan Machine Uni" , sans-serif;
+        font-family: "Tibetan Machine Uni", sans-serif;
         font-size: 25px;
         color: #fff;
     }
+
     .drop-ttn {
         width: 70px;
         font-size: 28px;
         background-image: none;
         background-color: transparent;
     }
+
     #menu {
         display: flex;
         justify-content: space-between;
@@ -70,9 +82,11 @@
         background-color: #333;
         color: #fff;
     }
+
     #menu h2 {
         margin: 0;
     }
+
     .search-container {
         position: absolute;
         top: 30px;
@@ -91,11 +105,13 @@
         background-size: 20px 20px;
         padding-left: 40px;
     }
+
     .search-button {
         padding: 5px;
         font-size: 18px;
         -webkit-border-radius: 15px;
     }
+
     .hover-listPlay ul {
         list-style-type: disc;
         color: #fff;
@@ -130,11 +146,25 @@
     <div id="menu">
         <h2>PlayList</h2>
         <a class="drop-ttn"><i class="fa fa-bars" style="color: #fff"></i></a>
+        <c:forEach var="list" items="${list}">
+            <input type="hidden" name="id" value="${list.id}"/>
+            <input type="hidden" name="name" value="${list.name}"/>
+            <input type="hidden" name="email" value="${list.email}"/>
+            <input type="hidden" name="phoneNumber" value="${list.phoneNumber}"/>
+            <input type="hidden" name="password" value="${list.passWord}"/>
+            <form action="/user?id=${list.id}" method="post">
+                <button  name="action" value="formEdit">Sua thong tin</button>
+            </form>
+            <form action="/editPassWord.jsp" >
+                <button name="action" value="fromChangePassword">doi mat khau</button>
+            </form>
+        </c:forEach>
     </div>
     <div id="left">
         <div class="hover-listPlay">
             <ul>
-                <li class="menu-myPlaylist" style="color: #fff"><a href="login.jsp" style="color: #fff">My Playlist</a></li>
+                <li class="menu-myPlaylist" style="color: #fff"><a href="login.jsp" style="color: #fff">My Playlist</a>
+                </li>
                 <li class="menu-last" style="color: #fff">Last Listening</li>
                 <li class="menu-recommended" style="color: #fff">Recommended</li>
             </ul>
@@ -144,7 +174,7 @@
     <div id="content"></div>
     <div id="right"></div>
     <div id="footer"></div>
+
 </div>
 </body>
 </html>
-a
