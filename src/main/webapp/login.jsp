@@ -12,17 +12,21 @@
     <title>Login</title>
     <style>
         body {
+            background-image: url("https://morninglightmusic.io/wp-content/uploads/2022/11/Hero-Image-V2-1.jpg");
+            background-size: contain;
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
+
         }
 
         .container {
             max-width: 400px;
             margin: 0 auto;
             padding: 40px;
-            background-color: #fff;
+            /*background-color: #fff;*/
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 180px auto;
         }
 
         h2 {
@@ -32,6 +36,7 @@
 
         .form-group {
             margin-bottom: 20px;
+            color: white;
         }
 
         label {
@@ -47,26 +52,29 @@
             font-size: 16px;
             border-radius: 3px;
             border: 1px solid #ccc;
+            /*color: #fff;*/
         }
 
         input[type="submit"] {
-            width: 100%;
+            width: 25%;
             padding: 10px;
             font-size: 16px;
-            color: #fff;
             background-color: #007bff;
             border: none;
             border-radius: 3px;
             cursor: pointer;
+            margin-left: 75%;
         }
 
         input[type="submit"]:hover {
             background-color: #0069d9;
         }
+        h1 {
+            color: white;
+        }
     </style>
 </head>
 <body>
-
 <div class="container">
     <h1>Music</h1>
     <form action="/user?action=login" method="post">

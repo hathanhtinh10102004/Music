@@ -1,18 +1,18 @@
-package com.example.music.service;
+package Dao;
 
-import com.example.music.model.Music;
+import model.User;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class MusicDAO implements MusicService{
+public class RegisterDAO implements IRegister {
     private String jdbcURL = "jdbc:mysql://localhost:3306/WebMusic";
     private  String jdbcUsername = "root";
-    private  String jdbcPassword ="password";
+    private  String jdbcPassword ="1";
 
-    public MusicDAO(){}
+    public RegisterDAO(){}
 
     protected Connection getConnection() throws SQLException {
         Connection connection = null;
@@ -27,13 +27,13 @@ public class MusicDAO implements MusicService{
     private static final String INSERT_User_SQL = "INSERT INTO User( Name, Email,PhoneNumber,PassWord) VALUE (?,?,?,?)";
 
     @Override
-    public void insertMusic(Music music) throws SQLException {
+    public void insertMusic(User user) throws SQLException {
         Connection connection = getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(INSERT_User_SQL);
-        preparedStatement.setString(1, music.getName());
-        preparedStatement.setString(2,music.getEmail());
-        preparedStatement.setInt(3,music.getPhoneNumber());
-        preparedStatement.setString(4,music.getPassWord());
+        preparedStatement.setString(1, user.getName());
+        preparedStatement.setString(2,user.getEmail());
+        preparedStatement.setInt(3,user.getPhoneNumber());
+        preparedStatement.setString(4,user.getPassWord());
         preparedStatement.executeUpdate();
 
     }

@@ -1,8 +1,8 @@
-package com.example.music.controller;
+package controller;
 
-import com.example.music.model.Music;
-import com.example.music.service.MusicDAO;
-import com.example.music.service.MusicService;
+import Dao.RegisterDAO;
+import Dao.IRegister;
+import model.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,12 +13,12 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 @WebServlet(value = "/register")
-public class MusicServlet extends HttpServlet {
-    private MusicService musicService;
+public class Register extends HttpServlet {
+    private IRegister iRegister;
 
     @Override
     public void init() {
-        musicService = new MusicDAO();
+        iRegister = new RegisterDAO();
 
     }
 
@@ -45,9 +45,9 @@ public class MusicServlet extends HttpServlet {
         int phoneNumber = Integer.parseInt(req.getParameter("phoneNumber"));
         String passWord = req.getParameter("passWord");
 
-        Music music = new Music(name, email, phoneNumber, passWord);
-        musicService.insertMusic(music);
-        req.getRequestDispatcher("/test.jsp").forward(req,resp);
+        User user = new User(name, email, phoneNumber, passWord);
+        iRegister.insertMusic(user);
+        req.getRequestDispatcher("/Home.jsp").forward(req,resp);
     }
 
 }
