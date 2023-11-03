@@ -72,6 +72,11 @@
         h1 {
             color: white;
         }
+        .register-link {
+            margin-top: -30px;
+            margin-right: 20px;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -88,6 +93,7 @@
         </div>
         <p style="color: red">${message}</p>
         <input type="submit" value="Login">
+        <a class="register-link" href="register.jsp">Đăng Ký</a>
     </form>
 </div>
 </body>
