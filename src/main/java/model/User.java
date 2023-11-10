@@ -39,6 +39,12 @@ public class User {
         PhoneNumber = phoneNumber;
     }
 
+    public User(String Email, String PassWord) {
+        this.Email = Email;
+        this.PassWord = PassWord;
+
+    }
+
     public int getId() {
         return Id;
     }

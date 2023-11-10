@@ -23,10 +23,6 @@ tasks.withType(JavaCompile) {
 
 dependencies {
     compileOnly('javax.servlet:javax.servlet-api:4.0.1')
-<<<<<<< HEAD
-=======
-// https://mvnrepository.com/artifact/javax.servlet/jstl
->>>>>>> 92a526c813fab4787bd181bfafa6dea24c7b4116
     implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.33'
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")

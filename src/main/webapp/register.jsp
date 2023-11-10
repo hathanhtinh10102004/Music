@@ -24,7 +24,7 @@
             <h1 class="text-center">Register Account</h1>
         </div>
         <div class="panel-body">
-            <form method="post">
+            <form method="post" action="register?action=register">
                 <div class="form-group">
                     <label for="usr">Name:</label>
                     <input required="true" type="text" class="form-control" id="usr" name="name"/>
@@ -34,8 +34,8 @@
                     <input required="true" type="email" class="form-control" id="email" name="email"/>
                 </div>
                 <div class="form-group">
-                    <label for="Phone number">Phone number:</label>
-                    <input type="number" class="form-control" id="Phone number" name="Phone number"/>
+                    <label for="phoneNumber">Phone number:</label>
+                    <input type="number" class="form-control" id="phoneNumber" name="phoneNumber"/>
                 </div>
                 <div class="form-group">
                     <label for="pwd">Password:</label>
@@ -48,18 +48,6 @@
         </div>
     </div>
 </div>
-
-<%--<h1 style="text-align: center">Register account</h1>--%>
-<%--<div style="width: 200px; margin-left: auto; margin-right: auto;">--%>
-<%--<form action="/register" method="post">--%>
-<%--    Name: <input type="text" name="name">--%>
-<%--    Email: <input type="text" name="email">--%>
-<%--    Phone number: <input type="number" name="phoneNumber">--%>
-<%--    Password: <input type="text" name="passWord">--%>
-<%--  <input type="hidden" name="action" value="register">--%>
-<%--    <input type="submit" value="Register">--%>
-<%--</form>--%>
-<%--</div>--%>
 </body>
 </html>
 

@@ -17,6 +17,9 @@
 
         .container h2 {
             text-align: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            margin-top: 50px;
         }
 
         .container label {
@@ -53,27 +56,50 @@
             font-family: Arial, sans-serif;
             color: white;
         }
+        .container {
+            position: relative;
+        }
+
+        .back-button {
+            position: absolute;
+            top: -40px;
+            left: 10px;
+            border: none;
+            background-color: transparent;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .change-password h2 {
+            margin-top: 50px;
+        }
     </style>
 </head>
 <body>
-<div class="container">
-    <h2>Change Password</h2>
-    <form action="editPassWord?action=updatePassword" method="post">
-        <input type="hidden" name="action" value="updatePassword">
-        <label style="color: white" for="id">ID:</label>
-        <input type="text" id="id" name="id"  required>
-        <label style="color: white" for="password">Current Password:</label>
-        <input type="password" id="password" name="password" required>
-        <label style="color: white" for="newPassword">New Password:</label>
-        <input type="password" id="newPassword" name="newPassword" required>
-        <label style="color: white" for="confirmPassword">Confirm Password:</label>
-        <input type="password" id="confirmPassword" name="confirmPassword" required>
-        <input type="submit" value="Change Password">
-        <p class="message">
-            <%-- Display error message here --%>
-            ${message}
-        </p>
+     <form action="Home.jsp" method="post">
+         <button name="action" value="back" style="border: none" > <- Back </button>
     </form>
-</div>
+    <div class="change-password">
+        <h2>Change Password</h2>
+        <div class="container">
+            <form action="editPassWord?action=updatePasswords" method="post">
+                <input type="hidden" name="id" value="${id}">
+                <h1 style="color:#ffffff;">${id}</h1>
+                <label for="oldpassword">Current Password:</label>
+                <input type="password" id="oldpassword" name="oldpassword" required>
+                <label for="newpassword">New Password:</label>
+                <input type="password" id="newpassword" name="newpassword" required>
+                <label for="conpassword">Confirm Password:</label>
+                <input type="password" id="conpassword" name="conpassword" required>
+                <input type="submit" value="Change Password">
+                <p class="message">
+
+                    ${message}
+                </p>
+            </form>
+        </div>
+
+    </div>
 </body>
 </html>

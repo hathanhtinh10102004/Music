@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 @WebServlet(name = "AddUser", value = "/addUser")
 public class AddUser extends HttpServlet {
@@ -25,13 +26,31 @@ public class AddUser extends HttpServlet {
         String email = request.getParameter("email");
         int  phoneNumber = Integer.parseInt(request.getParameter("phoneNumber"));
         String password = request.getParameter("password");
+
+        String emailOld = request.getParameter("emailOld");
+        String passwordOld = request.getParameter("passwordOld");
+
+
         User user = new User(name,email,phoneNumber,password);
+
 
         try {
             userDAO.addUser(user);
+
+            User user1 = new User(emailOld,passwordOld);
+            List<User> list = userDAO.selectAllUser();
+            request.setAttribute("listUser",list);
+
+            request.setAttribute("user",user1);
+            request.getRequestDispatcher("Admin.jsp").forward(request,response);
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
 

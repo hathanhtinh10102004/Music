@@ -108,7 +108,7 @@ public class UserServlet extends HelloServlet {
           req.setAttribute("list",list);
           req.getRequestDispatcher("Home.jsp").forward(req,resp);
         }else {
-            req.setAttribute("message","tai khoan khong ton tai !");
+            req.setAttribute("message","Account does not exist !");
             req.getRequestDispatcher("login.jsp").forward(req,resp);
         }
     }

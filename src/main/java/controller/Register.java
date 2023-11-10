@@ -11,15 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
-
 @WebServlet(value = "/register")
 public class Register extends HttpServlet {
     private IRegister iRegister;
-
     @Override
     public void init() {
         iRegister = new RegisterDAO();
-
     }
 
     @Override
@@ -35,6 +32,7 @@ public class Register extends HttpServlet {
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
+                break;
 
         }
     }
