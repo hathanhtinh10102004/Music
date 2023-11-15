@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Connect {
-    private static final String URL = "jdbc:mysql://localhost:3306/WebMusic";
+    private static final String URL = "jdbc:mysql://localhost:3306/WebMusic?user=demo";
     private static final String username = "username";
     private static final String password = "password";
 

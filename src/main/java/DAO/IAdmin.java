@@ -1,4 +1,4 @@
-package Controller;
+package DAO;
 
 
 
@@ -14,7 +14,8 @@ public interface IAdmin {
     }
 
     void deleteUser(int Id) throws SQLException, ClassNotFoundException;
-    public interface PlaylistDAO {
-        List<Playlist> getTopLikedPlaylists(int i);
+    public static List<Playlist> getTopLikedPlaylists(){
+        List<Playlist> playlists = null;
+        return playlists;
     }
 }
