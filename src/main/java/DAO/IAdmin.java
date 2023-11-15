@@ -1,7 +1,8 @@
-package DAO;
+package Controller;
 
 
-import Model.Admin;
+
+import Model.Playlist;
 import Model.User;
 
 import java.sql.SQLException;
@@ -13,4 +14,7 @@ public interface IAdmin {
     }
 
     void deleteUser(int Id) throws SQLException, ClassNotFoundException;
+    public interface PlaylistDAO {
+        List<Playlist> getTopLikedPlaylists(int i);
+    }
 }
