@@ -45,7 +45,7 @@ public class Register extends HttpServlet {
 
         User user = new User(name, email, phoneNumber, passWord);
         iRegister.insertMusic(user);
-        req.getRequestDispatcher("/Home.jsp").forward(req,resp);
+        req.getRequestDispatcher("/login.jsp").forward(req,resp);
     }
 
 }

@@ -69,18 +69,16 @@
         input[type="submit"]:hover {
             background-color: #0069d9;
         }
+
         h1 {
             color: white;
         }
-        /*.register-link {*/
-        /*    margin-top: -30px;*/
-        /*    margin-right: 20px;*/
-        /*    color: white;*/
-        /*}*/
+
+
         .register-button {
-            width: 25%;
+            width: 26%;
             font-size: 16px;
-            margin-top: -39px;
+            margin-top: -53px;
             margin-right: 20px;
             color: white;
             background-color: #007bff;
@@ -109,10 +107,17 @@
         </div>
         <p style="color: red">${message}</p>
         <input type="submit" value="Login">
-<%--        <a class="register-link" href="register.jsp">Register</a>--%>
-        <button class="register-button" onclick="window.location.href='register.jsp'">Register</button>
+        <%--        <a class="register-link" href="register.jsp">Register</a>--%>
     </form>
+    <button class="register-button" onclick="goToHome()">Register</button>
+
+
 </div>
+<script>
+    function goToHome() {
+        window.location.href = "register.jsp"; // Replace "/home" with the actual URL of your home page
+    }
+</script>
 </body>
 </html>
 

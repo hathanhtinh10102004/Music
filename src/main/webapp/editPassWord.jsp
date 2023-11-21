@@ -55,6 +55,8 @@
         h2 {
             font-family: Arial, sans-serif;
             color: white;
+            text-align: center;
+            margin-top: 50px;
         }
         .container {
             position: relative;
@@ -71,7 +73,7 @@
             cursor: pointer;
         }
 
-        .change-password h2 {
+        .change-password {
             margin-top: 50px;
         }
     </style>
@@ -82,24 +84,25 @@
     </form>
     <div class="change-password">
         <h2>Change Password</h2>
-        <div class="container">
-            <form action="editPassWord?action=updatePasswords" method="post">
-                <input type="hidden" name="id" value="${id}">
-                <h1 style="color:#ffffff;">${id}</h1>
-                <label for="oldpassword">Current Password:</label>
-                <input type="password" id="oldpassword" name="oldpassword" required>
-                <label for="newpassword">New Password:</label>
-                <input type="password" id="newpassword" name="newpassword" required>
-                <label for="conpassword">Confirm Password:</label>
-                <input type="password" id="conpassword" name="conpassword" required>
-                <input type="submit" value="Change Password">
-                <p class="message">
-
-                    ${message}
-                </p>
-            </form>
-        </div>
-
     </div>
+     <div class="container">
+        <form action="editPassWord?action=updatePassword" method="post">
+        <input type="hidden" name="action" value="updatePassword">
+        <label style="color: white" for="id">ID:</label>
+        <input type="text" id="id" name="id"  required>
+        <label style="color: white" for="password">Current Password:</label>
+        <input type="password" id="password" name="password" required>
+        <label style="color: white" for="newPassword">New Password:</label>
+        <input type="password" id="newPassword" name="newPassword" required>
+        <label style="color: white" for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required>
+        <input type="submit" value="Change Password">
+        <p class="message">
+            <%-- Display error message here --%>
+            ${message}
+        </p>
+    </form>
+
+</div>
 </body>
 </html>

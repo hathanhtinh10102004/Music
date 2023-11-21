@@ -11,7 +11,7 @@
 
 <head>
     <style>
-        body{
+        body {
             background-image: url("https://bloghocpiano.com/wp-content/uploads/2021/03/572353.jpg");
             background-size: cover;
         }
@@ -27,7 +27,8 @@
         }
     </style>
     <title>Show Admin</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
 <div class="header">
@@ -35,41 +36,42 @@
 </div>
 
 <form action="admin" method="get">
-    <input type="hidden" value="${user.getEmail()}" name="email" />
-    <input type="hidden" value="${user.getPassWord()}" name="password" />
-    <button name="action" value="back" style="border: none" > <- Back </button>
+    <input type="hidden" value="${user.getEmail()}" name="email"/>
+    <input type="hidden" value="${user.getPassWord()}" name="password"/>
+    <button name="action" value="back" style="border: none"> <- Back</button>
+
 </form>
-<form action="addUser.jsp?email=${user.getEmail()}&password=${user.getPassWord()}" method="post">
+<form action="addUser.jsp?email=${user.getEmail()}&password=${user.getPassWord()}" >
     <button name="action" value="add">Add</button>
 </form>
 <form>
     <div class="container">
-    <table style="color: white" class="table table-bordered border-primary">
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>PhoneNumber</th>
-            <th>Action</th>
-        </tr>
-
-        <c:forEach var="admin" items="${listUser}">
+        <table style="color: white" class="table table-bordered border-primary">
             <tr>
-                <td>${admin.id}</td>
-                <td>${admin.name}</td>
-                <td>${admin.email}</td>
-                <td>${admin.phoneNumber}</td>
-                <td>
-                    <form action="admin" method="get">
-                        <input type="hidden" value="${admin.id}" name="id" />
-                        <input type="hidden" value="${user.getEmail()}" name="email" />
-                        <input type="hidden" value="${user.getPassWord()}" name="password" />
-                        <button class="button-delete" name="action" value="delete">Delete</button>
-                    </form>
-                </td>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>PhoneNumber</th>
+                <th>Action</th>
             </tr>
-        </c:forEach>
-    </table>
+
+            <c:forEach var="admin" items="${listUser}">
+                <tr>
+                    <td>${admin.id}</td>
+                    <td>${admin.name}</td>
+                    <td>${admin.email}</td>
+                    <td>${admin.phoneNumber}</td>
+                    <td>
+                        <form action="admin" method="get">
+                            <input type="hidden" value="${admin.id}" name="id"/>
+                            <input type="hidden" value="${user.getEmail()}" name="email"/>
+                            <input type="hidden" value="${user.getPassWord()}" name="password"/>
+                            <button class="button-delete" name="action" value="delete">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </c:forEach>
+        </table>
     </div>
 </form>
 </body>

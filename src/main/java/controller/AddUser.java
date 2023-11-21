@@ -38,8 +38,8 @@ public class AddUser extends HttpServlet {
             userDAO.addUser(user);
 
             User user1 = new User(emailOld,passwordOld);
-            List<User> list = userDAO.selectAllUser();
-            request.setAttribute("listUser",list);
+            List<User> list1 = userDAO.selectAllUser();
+            request.setAttribute("listUser",list1);
 
             request.setAttribute("user",user1);
             request.getRequestDispatcher("Admin.jsp").forward(request,response);

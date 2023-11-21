@@ -2,6 +2,8 @@ package Dao;
 
 import model.User;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,15 +13,14 @@ public class UserDAO implements IUserDAO {
     private String userName = "root";
     private String passWord = "1";
     private static final String ADD_USER = "INSERT INTO User (Name,Email,PhoneNumber,PassWord) values (?,?,?,?)";
-    private static String UPDATE_PASSWORD_USER = "UPDATE User SET PassWord = ? WHERE Id = ?";
-    private static String SELECT_PASSWORD_BY_ID = "SELECT Id,PassWord FROM User WHERE Id = ? AND PassWord = ?";
+    private static final String UPDATE_PASSWORD_USER = "UPDATE User SET PassWord = ? WHERE Id = ?";
+    private static final String SELECT_PASSWORD_BY_ID = "SELECT Id,PassWord FROM User WHERE Id = ? AND PassWord = ?";
 
     private static final String  SELECT_USER = "select * from User where Email = ? and PassWord= ? ";
     private static final String UPDATE_USERS_SQL = "update User set Name = ?,Email= ?, PhoneNumber =? where Id = ?;";
     private static final String SELECT_USER_UPDATE = "select Id,Name , Email,PhoneNumber,PassWord from User where Id = ?;";
     private static final String SELECT_PROFILE_USER = "select Id,Name , Email,PhoneNumber,PassWord from User where Email = ? and PassWord = ? ";
     private static final String SELECT_ALL_USER = "select * from User ";
-    private static final String SELECT_PASSWORD = "select PassWord from User where Id = ? ";
     private static final String DELETE_USER = "delete from User where Id = ?  ";
 
 
@@ -45,22 +46,11 @@ public class UserDAO implements IUserDAO {
         Connection connection = connection();
         User user = null;
         PreparedStatement preparedStatement = connection.prepareStatement(SELECT_PASSWORD_BY_ID);
-        preparedStatement.setInt(1,id);
-        preparedStatement.setString(2,passWord);
+        preparedStatement.setInt(1, id);
+        preparedStatement.setString(2, passWord);
         ResultSet resultSet = preparedStatement.executeQuery();
         return resultSet.next();
     }
-
-    public void editPassWordUser(int id, String password) throws SQLException, ClassNotFoundException {
-        Connection connection = null;
-        connection = connection();
-        PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_PASSWORD_USER);
-        preparedStatement.setString(1,password);
-        preparedStatement.setInt(2,id);
-        preparedStatement.executeUpdate();
-    }
-
-
 
     public UserDAO(){
 
@@ -83,7 +73,13 @@ public class UserDAO implements IUserDAO {
         return resultSet.next();
     }
 
-
+    public void editPassWordUser(int id, String password) throws SQLException, ClassNotFoundException {
+        Connection connection = connection();
+        PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_PASSWORD_USER);
+        preparedStatement.setString(1,password);
+        preparedStatement.setInt(2,id);
+        preparedStatement.executeUpdate();
+    }
 
     @Override
     public boolean updateUser(User user) throws SQLException, ClassNotFoundException {
@@ -115,8 +111,6 @@ public class UserDAO implements IUserDAO {
         }
         return list;
     }
-
-
 
 
     @Override
@@ -161,28 +155,6 @@ public class UserDAO implements IUserDAO {
         PreparedStatement preparedStatement = connection.prepareStatement(DELETE_USER);
         preparedStatement.setInt(1,Id);
         preparedStatement.executeUpdate();
-    }
-
-    @Override
-    public void updatePassword(int Id, String PassWord) throws SQLException, ClassNotFoundException {
-        Connection connection = getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_PASSWORD_USER);
-        preparedStatement.setString(1,passWord);
-        preparedStatement.setInt(2,Id);
-preparedStatement.executeUpdate();
-    }
-
-    @Override
-    public User seletepassword(int Id) throws SQLException, ClassNotFoundException {
-        User user =new User(SELECT_PASSWORD);
-        PreparedStatement preparedStatement = connection().prepareStatement(SELECT_PASSWORD);
-        preparedStatement.setInt(1,Id);
-        ResultSet resultSet =preparedStatement.executeQuery();
-        while (resultSet.next()){
-            String password = resultSet.getString("PassWord");
-            user=new User(password);
-        }
-        return user;
     }
 
 }
