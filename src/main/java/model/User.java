@@ -7,7 +7,8 @@ public class User {
     private int PhoneNumber;
     private String PassWord;
     private String rePassword;
-    public User(String name, String email, int PhoneNumber, String PassWord){
+
+    public User(String name, String email, int PhoneNumber, String PassWord) {
         this.Name = name;
         this.Email = email;
         this.PhoneNumber = PhoneNumber;
@@ -28,7 +29,7 @@ public class User {
     }
 
     public User(String selectPassword) {
-        
+
     }
 
     public int getId() {
@@ -90,5 +91,4 @@ public class User {
                 ", rePassword='" + rePassword + '\'' +
                 '}';
     }
-
 }
