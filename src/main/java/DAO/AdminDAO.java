@@ -1,6 +1,7 @@
 package DAO;
 
 import Model.Playlist;
+import Model.Song;
 import Model.User;
 import java.sql.*;
 import java.util.ArrayList;
@@ -76,18 +77,49 @@ public class AdminDAO implements IAdmin {
                     String imageUrl = resultSet.getString("img");
 
 
-                    Playlist playlist = new Playlist( creatorName,likeCount,nameSong,imageUrl,listens);
+                    Playlist playlist = new Playlist( creatorName,likeCount,nameSong,listens,imageUrl);
                     playlists.add(playlist);
                 }
 
-                // Đóng kết nối và giải phóng tài nguyên
-//                resultSet.close();
-//                statement.close();
-//                connection.close();
+
             } catch (SQLException e) {
                 e.printStackTrace();
             }
 
             return playlists;
         }
+
+    public static List<Song> getTopLikedSong() {
+        List<Song> songs = new ArrayList<>();
+        try {
+            // Kết nối đến cơ sở dữ liệu
+            Connection connection = connect.connect();
+
+            // Tạo câu lệnh truy vấn SQL
+            String sql = "SELECT * FROM AddMusic ORDER BY like_count DESC LIMIT 8";
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            // Thực hiện truy vấn
+            ResultSet resultSet = statement.executeQuery();
+
+            // Xử lý kết quả truy vấn
+            while (resultSet.next()) {
+                String creatorName = resultSet.getString("creator");
+                int likeCount = resultSet.getInt("like_count");
+                String nameSong = resultSet.getString("namesong");
+                String listens = resultSet.getString("listens");
+                String imageUrl = resultSet.getString("img");
+
+
+                Song song = new Song( creatorName,likeCount,nameSong,listens,imageUrl);
+                songs.add(song);
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return songs;
+    }
     }

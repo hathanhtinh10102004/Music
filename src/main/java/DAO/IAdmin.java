@@ -3,6 +3,7 @@ package DAO;
 
 
 import Model.Playlist;
+import Model.Song;
 import Model.User;
 
 import java.sql.SQLException;
@@ -18,4 +19,9 @@ public interface IAdmin {
         List<Playlist> playlists = null;
         return playlists;
     }
+    public static List<Song> getTopLikedSong(){
+        List<Song> song = null;
+        return song;
+    }
+
 }

@@ -11,14 +11,11 @@
 <head>
     <title>Playlist</title>
     <style>
-        .navbar {
-            overflow: hidden;
-            background-color: #333;
-            position: fixed;
-            top: 0;
-            width: 100%;
+        body{
+            background-color: #f2f2f2;
+            background-size: cover;
+            background-image: url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fpngtree.com%2Ffreebackground%2Fblue-musical-notes-background_1986629.html&psig=AOvVaw05H6x2gPoMf65EFMm3yuFH&ust=1700712761097000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCLj87vHe1oIDFQAAAAAdAAAAABAJ");
         }
-
         .navbar a {
             float: left;
             display: block;
@@ -31,52 +28,82 @@
 
         .slider {
             padding: 16px;
-            margin-top: 70px;
+            margin-top: 200px;
             display: block;
+            border:1px solid #36e2ec;
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdpWg9aGJo4l7wZYom73mV3HZmhlgI0taVYY_GyOtVLg&s");
+            background-size: cover;
+            margin: auto;
+            border-radius: 10px;
+            width: 300px;
+            height: auto;
+            position: relative;
+            z-index: 1;
         }
 
         .playlist-card {
             flex: 0 0 auto;
             width: 300px;
-            /*margin-right: 10px;*/
+            border:1px solid #000;
+            margin: auto;
+            border-radius: 10px;
+            position: relative;
+            z-index: 2;
         }
-
+        .name{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align:center;
+        }
+        .slider .playlist-card .likeCount {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align:center;
+        }
         .playlist-card img {
             width: 100%;
             height: 200px;
             object-fit: cover;
         }
         .navbar {
-            wild: 95%;
+            width: 95%;
             height: auto;
             border:1px solid #36e2ec;
             margin: auto;
         }
-        .slider .h4 {
+        .slider .h2 {
+            font-size:30px;
+            font-family:Blenda;
+            font-weight: bold;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
+            text-align:center;
         }
     </style>
 </head>
 <body>
-<div class="navbar">
-    <a href="#home">Home</a>
-</div>
-<div class="slider" style="display: grid; grid-template-colum: repeat(4,1fr);grid-gap:20px;">
-    <div class="h4">Playlist Top Like</div>
-    <%
-        List<Playlist> playlists = (List<Playlist>) request.getAttribute("playlists");
-        for (Playlist playlist : playlists) {
-    %>
-    <div class="playlist-card">
-        <img src="<%= playlist.getImageUrl() %>" alt="Playlist Image">
-        <div>
+
+    <div class="slider" style="display: grid; grid-template-colum: repeat(4,2fr);grid-gap:20px;">
+        <div class="h2">Playlist top like</div>
+        <%
+            List<Playlist> playlists = (List<Playlist>) request.getAttribute("playlists");
+            for (Playlist playlist : playlists) {
+        %>
+        <div class="playlist-card">
+            <img src="<%= playlist.getImageUrl() %>" alt="Playlist Image">
+          <div class="name">
             Creator: <%= playlist.getCreatorName() %>
+          </div>
+            <div class="likeCount">
+                Like: <%= playlist.getLikeCount() %>
+            </div>
         </div>
+        <% } %>
     </div>
-    <% } %>
-</div>
-</div>
+
+
 </body>
 </html>
