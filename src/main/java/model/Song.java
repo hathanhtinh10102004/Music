@@ -6,11 +6,10 @@ public class Song {
     private String singer;
     private String description;
     private  String listen;
-
     private String image ;
     private  String mp3_file_path;
 
-    public Song(int id, String songName, String singer, String description, String listen, String image, String mp3_file_path) {
+    public Song(int id, String songName, String singer, String description, String listen, String mp3_file_path, String image) {
         this.id = id;
         this.songName = songName;
         this.singer = singer;
@@ -52,6 +51,25 @@ public class Song {
         this.singer = singer;
         this.image = image;
         this.mp3_file_path = mp3FilePath;
+    }
+
+    public Song(int id, String songName, String singer, String mp3FilePath, String image) {
+        this.id = id;
+        this.songName = songName;
+        this.singer = singer;
+        this.image = image;
+        this.mp3_file_path = mp3FilePath;
+    }
+
+    public Song(int id, String songName, String singer) {
+        this.id = id;
+        this.songName = songName;
+        this.singer = singer;
+    }
+
+    public Song(String songName, String singer) {
+        this.songName = songName;
+        this.singer = singer;
     }
 
     public int getId() {

@@ -95,7 +95,7 @@
 </head>
 <body>
 <div class="container">
-    <h1>Login </h1>
+        <h1>Login </h1>
     <form action="user?action=login" method="post">
         <div class="form-group">
             <label for="email">Email:</label>
@@ -110,8 +110,6 @@
         <%--        <a class="register-link" href="register.jsp">Register</a>--%>
     </form>
     <button class="register-button" onclick="goToHome()">Register</button>
-
-
 </div>
 <script>
     function goToHome() {

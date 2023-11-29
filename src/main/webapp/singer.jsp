@@ -27,7 +27,7 @@
             display: flex;
             /*align-items: center;*/
             justify-content: center;
-            background-image: url("https://didongviet.vn/dchannel/wp-content/uploads/2022/10/lofi-chill-la-gi-didongviet-4.jpg");
+            background-image: url("https://png.pngtree.com/thumb_back/fw800/background/20230519/pngtree-audio-players-in-the-sand-on-summer-image_2621461.jpg");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -46,8 +46,10 @@
         }
 
         th {
-            border: 1px solid wheat;
+            border: 2px solid black;
             padding: 5px;
+            color: black;
+            text-align: center;
         }
 
         table {
@@ -67,7 +69,7 @@
         }
 
         .s {
-            color: #ffffff;
+            color: black;
         }
 
         .a {
@@ -77,43 +79,43 @@
         .h {
             margin-top: 30px;
         }
+
+        h1 {
+            color: #1f1f1f;
+        }
     </style>
 </head>
 <body>
 <form action="singer" method="post">
     <div class="a">
         <div id="header">
-            <h1>Name Singer</h1>
+            <h1>Information</h1>
             <button name="action" value="back" style="border: none; position: absolute; left: 10px; top: 10px;">
                 <a href="Home.jsp" style="text-decoration: none; color: blueviolet;">&lt;- Back</a>
             </button>
         </div>
-<%--        <div class="parent">--%>
-<%--            <p style="color: red">${message}</p>--%>
-<%--            <input class="input" type="type" placeholder="Search..." name="find" id="word" size="30"/>--%>
+        <%--        <div class="parent">--%>
+        <%--            <p style="color: red">${message}</p>--%>
+        <%--            <input class="input" type="type" placeholder="Search..." name="find" id="word" size="30"/>--%>
 
-<%--            <button class="btn" name="action" value="Search">--%>
-<%--                <i class="fa-solid fa-magnifying-glass">Search</i>--%>
-<%--            </button>--%>
-<%--        </div>--%>
+        <%--            <button class="btn" name="action" value="Search">--%>
+        <%--                <i class="fa-solid fa-magnifying-glass">Search</i>--%>
+        <%--            </button>--%>
+        <%--        </div>--%>
         <div class="h">
-            <table border="1">
+            <table border="2">
                 <tr>
                     <th class="s">Name Singer</th>
                     <th class="s">Name Song</th>
                 </tr>
-                <tr>
-                    <td>
-                        <c:forEach items="${listSinger}" var="listSinger">
-                            <p style="color: white">${listSinger.nameSinger}</p>
-                        </c:forEach>
-                    </td>
-                    <td>
-                        <c:forEach items="${listSong}" var="listSong">
-                            <p style="color: white">${listSong.nameSong}</p>
-                        </c:forEach>
-                    </td>
-                </tr>
+
+                <c:forEach items="${list}" var="list">
+                    <tr>
+                        <td>${list.songName}</td>
+                        <td>${list.singer}</td>
+                    </tr>
+                </c:forEach>
+
             </table>
         </div>
     </div>

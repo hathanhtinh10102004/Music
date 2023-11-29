@@ -39,10 +39,21 @@ public class User {
         PhoneNumber = phoneNumber;
     }
 
-    public User(String Email, String PassWord) {
+    public User(int Id , String Email, String PassWord) {
+        this.Id = Id;
         this.Email = Email;
         this.PassWord = PassWord;
 
+    }
+    public User( String Email, String PassWord) {
+
+        this.Email = Email;
+        this.PassWord = PassWord;
+
+    }
+
+    public User(int id) {
+       this.Id = id;
     }
 
     public int getId() {

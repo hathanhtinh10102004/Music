@@ -6,6 +6,7 @@
         body {
             background-image: url("https://w0.peakpx.com/wallpaper/982/58/HD-wallpaper-microphone-ultra-music-dark-black-professional-studio-microphone-record-instrument-songs-voice.jpg");
         }
+
         .container {
             width: 300px;
             margin: 0 auto;
@@ -52,12 +53,14 @@
             text-align: center;
 
         }
+
         h2 {
             font-family: Arial, sans-serif;
             color: white;
             text-align: center;
             margin-top: 50px;
         }
+
         .container {
             position: relative;
         }
@@ -79,17 +82,16 @@
     </style>
 </head>
 <body>
-     <form action="Home.jsp" method="post">
-         <button name="action" value="back" style="border: none" > <- Back </button>
-    </form>
-    <div class="change-password">
-        <h2>Change Password</h2>
-    </div>
-     <div class="container">
-        <form action="editPassWord?action=updatePassword" method="post">
+<form action="Home.jsp" method="post">
+    <button name="action" value="back" style="border: none"> <- Back</button>
+</form>
+<div class="change-password">
+    <h2>Change Password</h2>
+</div>
+
+<div class="container">
+    <form action="editPassWord?action=updatePassword" method="post">
         <input type="hidden" name="action" value="updatePassword">
-        <label style="color: white" for="id">ID:</label>
-        <input type="text" id="id" name="id"  required>
         <label style="color: white" for="password">Current Password:</label>
         <input type="password" id="password" name="password" required>
         <label style="color: white" for="newPassword">New Password:</label>
@@ -101,6 +103,9 @@
             <%-- Display error message here --%>
             ${message}
         </p>
+        <input type="hidden" value="${user.getEmail()}" name="email"/>
+        <input type="hidden" value="${user.getId()}" name="id"/>
+        <input type="hidden" value="${user.getPassWord()}" name="password"/>
     </form>
 
 </div>

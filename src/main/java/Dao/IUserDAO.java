@@ -18,6 +18,7 @@ public interface IUserDAO {
 
     public List<User> selectAllUser() throws SQLException, ClassNotFoundException;
     public void deleteUser(int Id) throws SQLException, ClassNotFoundException;
+    public User selectIdUser(String email,String password) throws SQLException, ClassNotFoundException;
 
 }
 

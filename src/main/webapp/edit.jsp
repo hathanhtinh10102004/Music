@@ -201,7 +201,11 @@
     </style>
 </head>
 <body>
-<button class="back-button" onclick="goToHome()"><- Back</button>
+<form action="/admin" method="get">
+    <input type="hidden" value="${user.getEmail()}" name="email"/>
+    <input type="hidden" value="${user.getPassWord()}" name="password"/>
+    <button name="action" value="back" style="border: none"> <- Back</button>
+</form>
 <div class="update-form">
     <h1 style="text-align: center; margin-top: 20px" >Update Data</h1>
     <form action="/user" method="post" >
@@ -221,16 +225,18 @@
                 <input type="hidden" name="password" value="${list.passWord}" />
             </div>
             <div style="margin-right: 50px">
+                <input type="hidden" value="${user.getEmail()}" name="email"/>
+                <input type="hidden" value="${user.getPassWord()}" name="password"/>
                 <button class="a" style="background-color: #41b041"  name="action" value="edit">Update</button>
             </div>
         </c:forEach>
     </form>
 </div>
-<%--<div id="confirmationDialog" class="confirmation-dialog">--%>
-<%--    <p>Do you want to update?</p>--%>
-<%--    <button onclick="confirmUpdate()">OK</button>--%>
-<%--    <button onclick="cancelUpdate()">Cancel</button>--%>
-<%--</div>--%>
+<div id="confirmationDialog" class="confirmation-dialog">
+    <p>Do you want to update?</p>
+    <button onclick="confirmUpdate()">OK</button>
+    <button onclick="cancelUpdate()">Cancel</button>
+</div>
 
 <script>
     // function showConfirmation() {
@@ -254,9 +260,6 @@
     //     return false; // Prevent the form from submitting
     // }
 
-    function goToHome() {
-        window.location.href = "register.jsp"; // Replace "/home" with the actual URL of your home page
-    }
 </script>
 </body>
 </html>

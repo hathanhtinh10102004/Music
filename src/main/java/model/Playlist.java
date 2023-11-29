@@ -14,6 +14,10 @@ public class Playlist {
         this.listens = listens;
         this.img = img;
     }
+
+    public Playlist(String songName, String singer) {
+    }
+
     public String getCreator() {
         return creator;
     }

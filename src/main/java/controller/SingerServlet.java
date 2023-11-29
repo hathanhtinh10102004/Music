@@ -1,9 +1,6 @@
 package controller;
 
-import Dao.ISingerDAO;
-import Dao.ISongDAO;
-import Dao.SingerDAO;
-import Dao.SongDAO;
+import Dao.*;
 import model.Singer;
 import model.Song;
 
@@ -21,12 +18,12 @@ import java.util.List;
 public class SingerServlet extends HttpServlet {
 
     private ISingerDAO iSingerDAO;
-    private ISongDAO iSongDAO;
+    private IPlaylistDAO iPlaylistDAO;
 
     @Override
     public void init() throws ServletException {
         iSingerDAO = new SingerDAO();
-        iSongDAO = new SongDAO();
+        iPlaylistDAO = new PlaylistDAO();
     }
 
     @Override
@@ -50,12 +47,21 @@ public class SingerServlet extends HttpServlet {
 
     private void findSinger(HttpServletRequest req, HttpServletResponse resp) throws SQLException, ClassNotFoundException, ServletException, IOException {
         String find = req.getParameter("find");
-        List<Singer> listSinger = iSingerDAO.selectNameSinger(find);
+        System.out.println(find);
+        if ("".equals(find)){
+            req.setAttribute("song","This singer or song is not available !");
+            req.getRequestDispatcher("Home.jsp").forward(req,resp);
+        }else {
+            if (iPlaylistDAO.checkSearch(find)) {
+                List<Song> list = iPlaylistDAO.search(find);
+                req.setAttribute("list", list);
+                req.getRequestDispatcher("singer.jsp").forward(req, resp);
+            } else {
+                req.setAttribute("song","This singer or song is not available !");
+                req.getRequestDispatcher("Home.jsp").forward(req,resp);
+            }
+        }
 
-        List<Song> listSong = iSongDAO.selectNameSong(find);
 
-        req.setAttribute("listSinger", listSinger);
-        req.setAttribute("listSong", listSong);
-        req.getRequestDispatcher("singer.jsp").forward(req,resp);
     }
 }

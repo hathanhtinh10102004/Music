@@ -9,9 +9,9 @@ import java.util.List;
 public class SingerDAO implements ISingerDAO{
     private String ConnectUrl = "jdbc:mysql://localhost:3306/WebMusic";
     private String userName = "root";
-    private String passWord = "1";
+    private String passWord = "2004";
 
-    private static final String SELECT_NAME_SINGER = "select nameSinger from Singer where nameSinger like ? ";
+    private static final String SELECT_NAME_SINGER = "select nameSinger,Date_of_Birth,img from Singer where nameSinger like ? ";
     private static final String CHECK_NAME_SINGER = "select nameSinger from Singer where nameSinger like ? ";
 
 
@@ -35,7 +35,9 @@ public class SingerDAO implements ISingerDAO{
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
             String nameSinger = resultSet.getString("nameSinger");
-            list.add( new Singer(nameSinger));
+            String Date_of_Birth = resultSet.getString("Date_of_Birth");
+            String img = resultSet.getString("img");
+            list.add( new Singer(nameSinger,Date_of_Birth,img));
         }
         return list;
     }

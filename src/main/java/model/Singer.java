@@ -17,6 +17,12 @@ public class Singer {
         this.nameSinger = nameSinger;
     }
 
+    public Singer(String nameSinger, String Date_of_Birth, String img) {
+        this.nameSinger = nameSinger;
+        this.Date_of_Birth = Date_of_Birth;
+        this.img = img;
+    }
+
     public int getIdSinger() {
         return idSinger;
     }
@@ -47,5 +53,15 @@ public class Singer {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    @Override
+    public String toString() {
+        return "Singer{" +
+                "idSinger=" + idSinger +
+                ", nameSinger='" + nameSinger + '\'' +
+                ", Date_of_Birth='" + Date_of_Birth + '\'' +
+                ", img='" + img + '\'' +
+                '}';
     }
 }

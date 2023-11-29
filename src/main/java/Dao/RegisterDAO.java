@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class RegisterDAO implements IRegister {
     private String jdbcURL = "jdbc:mysql://localhost:3306/WebMusic";
     private  String jdbcUsername = "root";
-    private  String jdbcPassword ="1";
+    private  String jdbcPassword ="2004";
 
     public RegisterDAO(){}
 

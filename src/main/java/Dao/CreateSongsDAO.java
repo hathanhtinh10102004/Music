@@ -7,7 +7,7 @@ import java.sql.*;
 public class CreateSongsDAO implements ICreateSongsDAO {
     private String ConnectUrl = "jdbc:mysql://localhost:3306/WebMusic";
     private String userName = "root";
-    private String passWord = "1";
+    private String passWord = "2004";
 
     private static final String INSERT_SONG_SQL = "INSERT INTO AddMusic (songName,singer,description,image,mp3_file_path) VALUES (?, ?, ?,?,?)";
 

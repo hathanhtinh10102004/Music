@@ -164,7 +164,7 @@
             text-align: left;
             padding: 10px;
             border: 1px solid #fff;
-
+            text-align: center;
         }
 
         td {
@@ -180,42 +180,130 @@
             height: auto;
         }
 
+        .f {
+            width: 300px;
+            text-align: center;
+        }
+
+        .confirmation-dialog {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+        }
+
+        body {
+            background-image: url("https://media.istockphoto.com/id/1076840920/vi/vec-to/n%E1%BB%81n-nh%E1%BA%A1c.jpg?s=612x612&w=0&k=20&c=H-n_Ov3FHuVV8mkZk-UcGr54FdFYRkTiQ2Run37HmDY=");
+            background-size: cover;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 50px;
+        }
+
+        .a {
+            display: flex;
+            justify-content: center;
+            color: #1f1f1f;
+        }
+
     </style>
 </head>
 <body>
-<header>
-    <h1>Song List</h1>
-    <a href="create_song.jsp">Add Song</a> <!-- Thêm liên kết để chuyển đến trang add_song.jsp -->
-</header>
+<h1>Song List</h1>
+<div  class="a" >
+    <a href="create_song.jsp?&email=${user.getEmail()}&password=${user.getPassWord()}">Add Song</a> <!-- Thêm liên kết để chuyển đến trang add_song.jsp -->
+</div>
 <div class="container">
     <table class="table">
-        <thead>
+        <div style="margin-top: 40px">
+            <form action="/admin" method="get">
+                <input type="hidden" value="${user.getEmail()}" name="email"/>
+                <input type="hidden" value="${user.getPassWord()}" name="password"/>
+                <button name="action" value="back" style="border: none"> <- Back</button>
+            </form>
+        </div>
         <tr>
             <th>Song Name</th>
             <th>Singer</th>
             <th>File MP3</th>
             <th> Image</th>
+            <th>Action</th>
         </tr>
-        </thead>
         <tbody>
         <c:forEach var="list" items="${list}">
             <tr>
-                <td>${list.songName}</td>
-                <td>${list.singer}</td>
-                <td>${list.mp3_file_path}</td>
-              <td><img src="${list.image}" ></td>
+                <form action="songList" method="post">
+                    <td style="text-align: center">${list.songName}</td>
+                    <td style="text-align: center">${list.singer}</td>
+                    <td style="text-align: center">${list.mp3_file_path}</td>
+                    <td style="text-align: center" width="100px"><img src="${list.image}"></td>
+                    <td class="f">
+                        <button name="action" value="update">Update</button>
 
+                        <button name="action" value="profile">Profile</button>
 
+                        <input type="hidden" value="${user.getEmail()}" name="email"/>
+                        <input type="hidden" value="${user.getPassWord()}" name="password"/>
+
+                        <input type="hidden" name="id" value="${list.id}"/>
+                        <div id="confirmationDialog" class="confirmation-dialog">
+                            <p style="color: red">Do you want to update?</p>
+                            <button name="action" value="delete" onclick="confirmUpdate()">OK</button>
+                            <button onclick="cancelUpdate()">Cancel</button>
+                        </div>
+                </form>
+                <button onclick="showConfirmation()">Delete</button>
+                </td>
             </tr>
         </c:forEach>
+        <c:if test="${not empty update}">
+            <script>
+                alert("${update}")
+            </script>
+        </c:if>
         </tbody>
     </table>
 </div>
-<footer>
-    <%--    <h6>Footer content</h6>--%>
-</footer>
+<%--<form action="songList" method="post">--%>
 
+<%--</form>--%>
+<%--<footer>--%>
+<%--    <h6>Footer content</h6>--%>
+<%--</footer>--%>
+<script>
+    function home() {
+        window.location.href = "Home.jsp";
+    }
 
+    function showConfirmation() {
+        var confirmationDialog = document.getElementById('confirmationDialog');
+        confirmationDialog.style.display = 'block';
+        return false; // Prevent the form from submitting
+    }
 
+    function confirmUpdate() {
+        document.forms[0].submit();
+        var confirmationDialog = document.getElementById('confirmationDialog');
+        confirmationDialog.style.display = 'none';
+        alert("Xoá thành công");
+        window.location.href = "songList.jsp";
+
+    }
+
+    function cancelUpdate() {
+        var confirmationDialog = document.getElementById('confirmationDialog');
+        confirmationDialog.style.display = 'none';
+        window.location.href = "songList.jsp";
+        return false; // Prevent the form from submitting
+    }
+</script>
 </body>
 </html>
+

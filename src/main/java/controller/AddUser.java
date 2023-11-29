@@ -42,6 +42,7 @@ public class AddUser extends HttpServlet {
             request.setAttribute("listUser",list1);
 
             request.setAttribute("user",user1);
+            request.setAttribute("add","Them thanh cong!");
             request.getRequestDispatcher("Admin.jsp").forward(request,response);
 
         } catch (SQLException e) {

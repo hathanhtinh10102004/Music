@@ -11,7 +11,7 @@ import java.util.List;
 public class UserDAO implements IUserDAO {
     private String ConnectUrl = "jdbc:mysql://localhost:3306/WebMusic";
     private String userName = "root";
-    private String passWord = "1";
+    private String passWord = "2004";
     private static final String ADD_USER = "INSERT INTO User (Name,Email,PhoneNumber,PassWord) values (?,?,?,?)";
     private static final String UPDATE_PASSWORD_USER = "UPDATE User SET PassWord = ? WHERE Id = ?";
     private static final String SELECT_PASSWORD_BY_ID = "SELECT Id,PassWord FROM User WHERE Id = ? AND PassWord = ?";
@@ -22,6 +22,7 @@ public class UserDAO implements IUserDAO {
     private static final String SELECT_PROFILE_USER = "select Id,Name , Email,PhoneNumber,PassWord from User where Email = ? and PassWord = ? ";
     private static final String SELECT_ALL_USER = "select * from User ";
     private static final String DELETE_USER = "delete from User where Id = ?  ";
+    private static final String SELECT_ID_USER = "select Id from User where Email = ?  and PassWord = ? " ;
 
 
 
@@ -155,6 +156,22 @@ public class UserDAO implements IUserDAO {
         PreparedStatement preparedStatement = connection.prepareStatement(DELETE_USER);
         preparedStatement.setInt(1,Id);
         preparedStatement.executeUpdate();
+    }
+
+    @Override
+    public User selectIdUser(String email, String password) throws SQLException, ClassNotFoundException {
+        Connection connection = connection();
+        User user = null;
+        PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ID_USER);
+        preparedStatement.setString(1,email);
+        preparedStatement.setString(2,password);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()){
+            int Id = resultSet.getInt("Id");
+            user = new User(Id);
+        }
+        return user;
+
     }
 
 }

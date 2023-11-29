@@ -9,9 +9,9 @@ import java.util.List;
 public class SongDAO implements ISongDAO{
     private String ConnectUrl = "jdbc:mysql://localhost:3306/WebMusic";
     private String userName = "root";
-    private String passWord = "1";
+    private String passWord = "2004";
 
-    private static final String SELECT_NAME_SONG  = "select nameSong from Song where nameSinger like ? ";
+    private static final String SELECT_NAME_SONG  = "select nameSong from Song where Songcol like ? ";
     private static final String CHECK_NAME_SONG = "select nameSong from Song where nameSong like ? ";
 
 

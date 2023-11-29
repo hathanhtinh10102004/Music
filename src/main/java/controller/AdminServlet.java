@@ -8,7 +8,6 @@ import com.example.music.HelloServlet;
 import model.Admin;
 import model.User;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -86,8 +85,10 @@ public class AdminServlet extends HelloServlet {
     private void back(HttpServletRequest request, HttpServletResponse response) throws SQLException, ClassNotFoundException, ServletException, IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        List<User> list=  iUserDAO.selectProfileUser(email,password);
+        List<User> list= iUserDAO.selectProfileUser(email,password);
         request.setAttribute("list",list);
+        User user = new User(email, password);
+        request.setAttribute("user", user);
         request.getRequestDispatcher("Home.jsp").forward(request,response);
 
     }

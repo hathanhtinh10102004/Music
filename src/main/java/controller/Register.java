@@ -41,9 +41,9 @@ public class Register extends HttpServlet {
         String name = req.getParameter("name");
         String email = req.getParameter("email");
         int phoneNumber = Integer.parseInt(req.getParameter("phoneNumber"));
-        String passWord = req.getParameter("passWord");
+        String password = req.getParameter("password");
 
-        User user = new User(name, email, phoneNumber, passWord);
+        User user = new User(name, email, phoneNumber, password);
         iRegister.insertMusic(user);
         req.getRequestDispatcher("/login.jsp").forward(req,resp);
     }
